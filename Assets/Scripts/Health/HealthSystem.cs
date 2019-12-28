@@ -25,13 +25,13 @@ public class HealthSystem : MonoBehaviour
 
         currentHealth -= amount;
         lastDamageTakenTime = Time.time;
-        Debug.Log($"Taking {amount} points of damage. Current hp is {currentHealth}.");
+        Debug.Log($"{gameObject.name} takes {amount} points of damage. Current hp is {currentHealth}.");
 
         if (currentHealth <= 0)
             Die();
     }
     private void Die()
     {
-
+        Destroy(gameObject);
     }
 }

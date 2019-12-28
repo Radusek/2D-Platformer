@@ -6,7 +6,7 @@ public class OnTouchAttack : Attack
 {
     private void Attack(Collision2D collision)
     {
-        if (collision.gameObject.layer == (int)Layer.Player)
+        if (collision.gameObject.layer.IsInLayerMask(targetLayers))
             collision.gameObject.GetComponent<HealthSystem>().TakeDamage(damage);
     }
 

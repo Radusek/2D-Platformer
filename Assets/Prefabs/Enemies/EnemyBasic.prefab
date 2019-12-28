@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4735502015467575712}
   - component: {fileID: 4735502015467575717}
   - component: {fileID: 4735502015467575713}
+  - component: {fileID: 6210281180827597010}
   - component: {fileID: 4250091438951352563}
   m_Layer: 9
   m_Name: EnemyBasic
@@ -170,6 +171,19 @@ MonoBehaviour:
   waypoints:
   - {x: -10, y: 5.5}
   - {x: 0, y: 5.5}
+--- !u!114 &6210281180827597010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4735502015467575714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5d54eeb1910ec4abb54e5b6341100c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 30
 --- !u!114 &4250091438951352563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,3 +197,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 256
