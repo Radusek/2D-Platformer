@@ -8,14 +8,18 @@ public class PlayerAnimationHandler : MonoBehaviour
     public GameObject playerGraphicsObject;
 
     private Rigidbody2D rb;
+    private Animator animator;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     private void Update()
     {
         SetProperDirection();
+
+        animator.SetFloat("horizontalSpeed", Mathf.Abs(rb.velocity.x));
     }
 
     private void SetProperDirection()
