@@ -14,7 +14,7 @@ public class PlayerStats : HealthSystem
     }
     public override void TakeDamage(int amount, float invuTime = invulnerabilityTime)
     {
-        bool shouldDie = base.TakeDamageAndCheckIfShouldDie(amount, invuTime);
+        bool shouldDie = base.SubtractHpAndCheckIfShouldDie(amount, invuTime);
         HUDManager.Instance.SetPlayerHpBarValue(GetHpFraction());
 
         if (shouldDie)
@@ -23,10 +23,4 @@ public class PlayerStats : HealthSystem
             base.Die();
         }
     }
-
-    private float GetHpFraction()
-    {
-        return (float)currentHealth / maxHealth;
-    }
-
 }
