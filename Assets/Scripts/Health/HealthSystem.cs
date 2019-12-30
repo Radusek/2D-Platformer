@@ -5,32 +5,44 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     [SerializeField]
-    private int maxHealth;
-    private int currentHealth;
+    protected int maxHealth;
+    protected int currentHealth;
 
     [SerializeField]
-    private const float invulnerabilityTime = 0.5f;
-    private float lastDamageTakenTime;
+    protected const float invulnerabilityTime = 0.5f;
+    protected float lastDamageTakenTime;
 
     void Start()
+    {
+        Initialize();
+    }
+
+    protected void Initialize()
     {
         currentHealth = maxHealth;
         lastDamageTakenTime = Time.time;
     }
 
-    public void TakeDamage(int amount, float invuTime = invulnerabilityTime)
+    protected bool TakeDamageAndCheckIfShouldDie(int amount, float invuTime = invulnerabilityTime)
     {
         if (Time.time <= lastDamageTakenTime + invuTime)
-            return;
+            return false;
 
         currentHealth -= amount;
         lastDamageTakenTime = Time.time;
+
         Debug.Log($"{gameObject.name} takes {amount} points of damage. Current hp is {currentHealth}.");
 
-        if (currentHealth <= 0)
+        return currentHealth <= 0;
+    }
+
+    public virtual void TakeDamage(int amount, float invuTime = invulnerabilityTime)
+    {
+        bool shouldDie = TakeDamageAndCheckIfShouldDie(amount, invuTime);
+        if (shouldDie)
             Die();
     }
-    private void Die()
+    protected void Die()
     {
         Destroy(gameObject);
     }
