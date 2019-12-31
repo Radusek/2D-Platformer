@@ -18,9 +18,3 @@ public static class MyExtensions
         return layerMask == (layerMask | (1 << layer));
     }
 }
-
-    public enum Layer
-{
-    Player = 8,
-    Enemy = 9
-}

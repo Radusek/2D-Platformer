@@ -8,6 +8,8 @@ public class HpBarUpdater : MonoBehaviour
 {
     [SerializeField]
     private Slider hpBar;
+    [SerializeField]
+    private bool showWhenFull = false;
     private HealthSystem healthSystem;
 
     private void Awake()
@@ -15,20 +17,10 @@ public class HpBarUpdater : MonoBehaviour
         healthSystem = GetComponent<HealthSystem>();
     }
 
-    private void OnEnable()
-    {
-        healthSystem.OnHpChanged += UpdateHpBar;
-    }
-
-    private void UpdateHpBar()
+    public void UpdateHpBar()
     {
         float hpFraction = healthSystem.GetHpFraction();
-        hpBar.gameObject.SetActive(hpFraction < 1f);
+        hpBar.gameObject.SetActive(hpFraction > 0f && (showWhenFull || hpFraction < 1f));
         hpBar.value = hpFraction;
-    }
-
-    private void OnDisable()
-    {
-        healthSystem.OnHpChanged -= UpdateHpBar;
     }
 }

@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class HealthSystem : MonoBehaviour
 {
@@ -12,9 +14,7 @@ public class HealthSystem : MonoBehaviour
     protected const float invulnerabilityTime = 0.5f;
     protected float lastDamageTakenTime;
 
-    public delegate void HpChange();
-    public event HpChange OnHpChanged;
-
+    public UnityEvent OnHpChanged;
 
     void Start()
     {

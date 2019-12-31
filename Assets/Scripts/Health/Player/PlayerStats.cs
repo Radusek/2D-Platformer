@@ -8,18 +8,14 @@ public class PlayerStats : HealthSystem
     void Start()
     {
         base.Initialize();
-
-        HUDManager.Instance.SetPlayerHpBarActive(true);
-        HUDManager.Instance.SetPlayerHpBarValue(GetHpFraction());
     }
+
     public override void TakeDamage(int amount, float invuTime = invulnerabilityTime)
     {
         bool shouldDie = base.SubtractHpAndCheckIfShouldDie(amount, invuTime);
-        HUDManager.Instance.SetPlayerHpBarValue(GetHpFraction());
 
         if (shouldDie)
         {
-            HUDManager.Instance.SetPlayerHpBarActive(false);
             base.Die();
         }
     }
